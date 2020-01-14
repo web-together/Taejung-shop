@@ -3,9 +3,6 @@ from .models import *
 
 # admin.site.register(Category)
 # admin.site.register(Product)
-from django.contrib import admin
-
-from .models import *
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ['name','slug']
