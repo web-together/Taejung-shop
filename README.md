@@ -16,9 +16,36 @@
  - `6.5` shop 앱 만들기 부터
  - `6.6` 소셜 로그인 추가 까지
 
-## Useful Model Columns
+### Useful Model Columns
 
-## Slug
+### Slug
 
+#### 개념 
+
+URL의 이름을 모델 내의 객체를 기반으로 짓는 방법
+
+> https://web-together.github.io/ 의 12번 째 post의 제목이 Hello World 였다면?
+
+ - https://web-together.github.io/post/12 (id)
+ - https://web-together.github.io/post/Hello%20World (str)
+ - https://web-together.github.io/post/Hello-World   (slug)
+
+#### code 
+
+```
+models.py/
+    slug = models.SlugField(max_length=200, db_index=True, unique=True, allow_unicode=True)
+    # max_length    = slug의 최대 길이
+    # db_index      = 해당 필드를 인덱스 값으로 지정
+    # allow_unicode = (한글 지원) 영문을 제외한 다른 언어도 사용할 수 있게 한다
+
+```
+
+```
+    urls.py/
+    path('<slug:category_slug>/', product_in_category, name='product_in_category'),
+```
+
+---
 
 original source = https://github.com/Baepeu/onlineshop
