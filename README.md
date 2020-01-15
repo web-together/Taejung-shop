@@ -1,3 +1,6 @@
+# Django-shop-taejung
+2주차 web-together 클론 코딩
+
 ## 클론 코딩 과정
 
 - 코드 동작 과정 이해하며 직접 손으로 쳐 봅니다.
