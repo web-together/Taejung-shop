@@ -16,9 +16,9 @@
  - `6.5` shop 앱 만들기 부터
  - `6.6` 소셜 로그인 추가 까지
 
-### Useful Model Columns
+### > URL Reverse
 
-### Slug
+### > Slug
 
 #### 개념 
 
