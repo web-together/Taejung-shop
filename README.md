@@ -18,13 +18,35 @@
 
 ### > URL Reverse
 
+[참고자료](https://wayhome25.github.io/django/2017/05/05/django-url-reverse/)
+
+`get_absolute_url`
+
+- 객체의 상세 페이지 주소를 반환하는 메서드
+- 객체를 수정하거나 추가했을 때 이동할 주소를 위해 호출
+- 템플릿에서 상세 화면에서 이동하는 링크를 만들 때 호출
+- `get_absolute_url`에 사용되는 `reverse` 함수
+    - URL 패턴 이름을 가지고 해당 패턴을 찾아 주소를 만들어주는 함수
+    - 되돌아갈 페이지의 패턴 이름이 product app의 product_in_category 인 셈
+    - args는 여러 값들을 리스트로 전달하는 데에 사용 (url을 만드는 데에 필요한 pk)
+
+#### code 
+
 ```
 /models.py
     from django.urls import reverse
     ...
-    def get_absolute_url(self):
-        return reverse('shop:product_in_category', args=[self.slug])
+    
+    class Category(models.Model):
+        ...
+        def get_absolute_url(self):
+            return reverse('shop:product_in_category', args=[self.slug])
 
+
+    class Product(models.Model):
+        ...
+        def get_absolute_url(self):
+            return reverse('shop:product_detail', args=[self.id, self.slug])
 ```
 
 ### > Slug
