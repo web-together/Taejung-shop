@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 
 from .models import *
 
-# list view aka category page
+
 def product_in_category(request, category_slug=None):
     current_category = None
     categories = Category.objects.all()
@@ -13,12 +13,10 @@ def product_in_category(request, category_slug=None):
         products = products.filter(category=current_category)
 
     return render(request, 'shop/list.html',
-                  {'current_category': current_category, 
-                  'categories': categories, 
-                  'products': products})
+                  {'current_category': current_category, 'categories': categories, 'products': products})
 
-# detail view
+
 def product_detail(request, id, product_slug=None):
     product = get_object_or_404(Product, id=id, slug=product_slug)
 
-    return render(request, 'shop/detail.html', {'product': product, 'add_to_cart':add_to_cart})
+    return render(request, 'shop/detail.html', {'product': product})
