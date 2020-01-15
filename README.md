@@ -62,7 +62,7 @@ template tag 상의 `{% url 'detail' object.id %}` 와 본질적으로 같다
             return reverse('shop:product_detail', args=[self.id, self.slug])
 ```
 
-*객체 추가/수정에 대한 기본 반환 주소는 get_absolute_url으로 본인 페이지로 설정해두고,*
+*객체 추가/수정에 대한 기본 반환 주소는 `get_absolute_url`으로 본인 페이지로 설정해두고,*   
 *특정 링크만 다른 페이지로 넘어가게끔 설계하는 게 일반적*
 
 ### > Slug
@@ -71,7 +71,7 @@ template tag 상의 `{% url 'detail' object.id %}` 와 본질적으로 같다
 
 URL의 이름을 모델 내의 객체를 기반으로 짓는 방법
 
-> https://web-together.github.io/ 의 12번 째 post의 제목이 Hello World 였다면?
+> https://web-together.github.io/ 의 12번 째 post의 제목이 `Hello World` 였다면?
 
  - https://web-together.github.io/post/12 (id)
  - https://web-together.github.io/post/Hello%20World (str)
@@ -94,9 +94,11 @@ urls.py/
     path('<slug:category_slug>/', product_in_category, name='product_in_category'),
 ```
 
+> 인자의 기본값은 None (없으면 None, 있으면 category_slug)
+
 ```
 views.py/
-    def product_in_category(request, category_slug=None):   # 인자의 기본값은 None
+    def product_in_category(request, category_slug=None):       
         current_category = None
         categories = Category.objects.all()
         products = Product.objects.filter(available_display=True)
