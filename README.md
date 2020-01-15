@@ -22,12 +22,12 @@
 
 `get_absolute_url`
 
-- 객체의 상세 페이지 주소를 반환하는 메서드
-- 객체를 수정하거나 추가했을 때 이동할 주소를 위해 호출
-- 템플릿에서 상세 화면에서 이동하는 링크를 만들 때 호출
+- 객체의 반환 url(주로 상세 페이지 주소)을 반환하는 메서드
+- 객체를 수정하거나 추가했을 때 이동할 주소를 위해 호출한다
+- 템플릿에서 상세 화면에서 이동하는 링크를 만들 때 호출한다
 - `get_absolute_url`에 사용되는 `reverse` 함수
     - URL 패턴 이름을 가지고 해당 패턴을 찾아 주소를 만들어주는 함수
-    - 되돌아갈 페이지의 패턴 이름이 product app의 product_in_category 인 셈
+    - 되돌아갈 페이지의 패턴 이름이 `product app`의 `product_in_category` 인 셈
     - args는 여러 값들을 리스트로 전달하는 데에 사용 (url을 만드는 데에 필요한 pk)
 
 template tag 상의 `{% url 'detail' object.id %}` 와 본질적으로 같다
@@ -61,6 +61,9 @@ template tag 상의 `{% url 'detail' object.id %}` 와 본질적으로 같다
         def get_absolute_url(self):
             return reverse('shop:product_detail', args=[self.id, self.slug])
 ```
+
+*객체 추가/수정에 대한 기본 반환 주소는 get_absolute_url으로 본인 페이지로 설정해두고,*
+*특정 링크만 다른 페이지로 넘어가게끔 설계하는 게 일반적*
 
 ### > Slug
 
