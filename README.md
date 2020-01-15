@@ -30,6 +30,19 @@
     - 되돌아갈 페이지의 패턴 이름이 product app의 product_in_category 인 셈
     - args는 여러 값들을 리스트로 전달하는 데에 사용 (url을 만드는 데에 필요한 pk)
 
+template tag 상의 `{% url 'detail' object.id %}` 와 본질적으로 같다
+
+```
+<a href="{{product.get_absolute_url}}" class="btn btn-primary">View Detail</a>
+```
+
+```
+{% for c in categories %}
+    <a href="{{c.get_absolute_url}}" class="list-group-item {% if current_category.slug == c.slug %}active{%endif %}">{{c.name}}</a>
+{% endfor %}
+
+```
+
 #### code 
 
 ```
